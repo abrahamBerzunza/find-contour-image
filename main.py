@@ -42,7 +42,7 @@ def create_file(file_name, contours):
   # Guardar las coordenadas Y
   for _row in range(len(contours)):
     for _col in range(len(contours[_row])):
-      y = contours[_row][_col].item(0)
+      y = contours[_row][_col].item(1)
 
       if(_row == (len(contours) - 1) and _col == (len(contours[_row]) - 1) ):
         file.write(f'{y}];')
