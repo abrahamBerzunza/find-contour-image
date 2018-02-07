@@ -25,7 +25,7 @@ def find_contour(image):
 #Crear archivo .mat 
 def create_file(file_name, contours):
 
-  file = open(f"./files/{file_name}.mat", "w") 
+  file = open(f"./files/{file_name}.m", "w") 
   
   for row in range(len(contours)):
     file.write(f"Cont{row} = [")
