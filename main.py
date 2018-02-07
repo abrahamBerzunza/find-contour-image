@@ -18,7 +18,7 @@ def image_labeling(image):
 
 #Localizar el contorno de la imagen 
 def find_contour(image): 
-  _, contours, _ = cv2.findContours(image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+  _, contours, _ = cv2.findContours(image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
   return contours
 
 
@@ -26,26 +26,22 @@ def find_contour(image):
 def create_file(file_name, contours):
 
   file = open(f"./files/{file_name}.mat", "w") 
- 
-  file.write('Cont01 = [')
   
-  # Guardar las coordenadas X
   for row in range(len(contours)):
+    file.write(f"Cont{row} = [")
+    # Almacena las coordenadas de X
     for col in range(len(contours[row])):
       x = contours[row][col].item(0)
-
-      if( row == (len(contours) - 1) and col == (len(contours[row]) - 1)):
+      if(col == (len(contours[row]) - 1)):
         file.write(f'{x}; ')
       else: 
         file.write(f'{x}, ')
 
-  # Guardar las coordenadas Y
-  for _row in range(len(contours)):
-    for _col in range(len(contours[_row])):
-      y = contours[_row][_col].item(1)
-
-      if(_row == (len(contours) - 1) and _col == (len(contours[_row]) - 1) ):
-        file.write(f'{y}];')
+    # Almacena las coordenadas de Y
+    for _col in range(len(contours[row])):
+      y = contours[row][_col].item(1)
+      if(_col == (len(contours[row]) - 1) ):
+        file.write(f'{y}];\n')
       else: 
         file.write(f'{y}, ')
 
