@@ -10,4 +10,4 @@
 
 * <*image*>.<*extension*>
 
-**File folder contain** *(image_name)* **.mat file for ploting in octave/matlab the contour.**
+**folder "File" contains** *(image_name)* **.m file for ploting in octave/matlab the contour.**
